@@ -8,4 +8,6 @@ it only displays errors in the console too.
 
 anddd, it probably can run arbitrary code.
 
-<b>no, i won't add a library.
+also, it doesn't generate a link for the code, so you have to manually copy and paste.
+
+### no, i won't add a library.
