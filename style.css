@@ -1,0 +1,23 @@
+body {
+    background-color: black;
+    color: white;
+}
+
+textarea {
+    resize: none;
+    background-color: black;
+    color: white;
+}
+
+input {
+    background-color: black;
+    color: white;
+}
+
+button {
+    width: 200px;
+    background-color: black;
+    color: white;
+    border-radius: 200px;
+    border-color: white;
+}
