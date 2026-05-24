@@ -13,12 +13,6 @@ function play() {
     const faksr = Number(document.getElementById("sr").value) || 8000;
 
     let cod = document.getElementById("t").value;
-    if (!cod) {
-        cod = bytebeats[currentFormula];
-        currentFormula = (currentFormula + 1) % bytebeats.length;
-        document.getElementById("t").value = cod;
-    }
-
     if (!sndctx) sndctx = new AudioContext();
 
     if (!audioBuffer || source === null) {
@@ -56,7 +50,6 @@ function play() {
         pausedAt = sndctx.currentTime - startTime;
         source = null;
         isPlaying = false;
-        document.getElementById("playBtn").innerText = "Resume";
     }
 }
 
@@ -69,3 +62,50 @@ function rewind() {
     isPlaying = false;
     document.getElementById("playBtn").innerText = "Play";
 }
+
+function changeUrl() {
+    let url = new URL(window.location.href);
+
+    let info = {form: document.getElementById("t").value, length:Number(document.getElementById("tim").value) || 30, faksr: Number(document.getElementById("sr").value) || 8000};
+    let elm = Base64.encodeURI(JSON.stringify(info));
+    let encodedForUrl = "v1_"+elm;
+
+    console.log(encodedForUrl);
+
+    url.searchParams.set("byte",encodedForUrl)
+
+    history.replaceState(null, "", url);
+}
+
+function loadUrlData() {
+    let params = new URLSearchParams(location.search);
+
+    let raw = params.get("byte");
+
+    if (!raw) return null;
+
+    try {
+        if (raw.startsWith("v1_")) {
+            return JSON.parse(
+                Base64.decode(raw.slice(3))
+            );
+        }
+    }
+    catch (err) {
+        console.error("Invalid URL data:", err);
+    }
+
+    return null;
+}
+
+let data = loadUrlData();
+
+if (data) {
+    document.getElementById("t").value = data.form ?? "";
+    document.getElementById("tim").value = data.length ?? 30;
+    document.getElementById("sr").value = data.faksr ?? 8000;
+}
+
+document.getElementById("t").addEventListener("input",changeUrl)
+document.getElementById("sr").addEventListener("input",changeUrl)
+document.getElementById("tim").addEventListener("input",changeUrl)
