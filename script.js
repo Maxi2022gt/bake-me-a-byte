@@ -107,8 +107,6 @@ function changeUrl() {
     let info = {form: document.getElementById("t").value, length:Number(document.getElementById("tim").value) || 30, faksr: Number(document.getElementById("sr").value) || 8000, mode: document.getElementById("mode").value};
     let elm = Base64.encodeURI(JSON.stringify(info));
     let encodedForUrl = "v2_"+elm;
-    console.log(info);
-    console.log(encodedForUrl);
 
     url.searchParams.set("byte",encodedForUrl)
 
