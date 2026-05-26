@@ -12,7 +12,16 @@
     <input type="number" id="sr" value="8000">
     <input type="number" id="tim" value="10">
     <button onclick="play()" id="playBtn">Play</button>
-    <button onclick="rewind()">Rewind</button>
+    <select name="mode" id="mode">
+        <option disabled="true">- NORMAL MODES -</option>
+        <option selected="selected">Bytebeat</option>
+        <option>Signed Bytebeat</option>
+        <option>Floatbeat</option>
+        <option disabled="true">- EXOTIC MODES -</option> 
+        <option>Bitbeat</option>
+        <option>Bitbeat (Alt)</option>
+        <option>2048Mode</option>
+    </select>
     <script src="script.js"></script>
 </body>
 </html>

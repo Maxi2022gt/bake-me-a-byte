@@ -1,4 +1,4 @@
-body {
+body, input, select {
     background-color: black;
     color: white;
 }
@@ -9,10 +9,6 @@ textarea {
     color: white;
 }
 
-input {
-    background-color: black;
-    color: white;
-}
 
 button {
     width: 200px;

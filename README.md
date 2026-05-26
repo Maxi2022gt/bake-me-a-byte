@@ -2,7 +2,7 @@
 
 very bad and basic bytebeat player. 
 
-it uses AudioContexts, which iirc are almost obsolete.
+~~it uses AudioContexts, which iirc are almost obsolete.~~
 
 it only displays errors in the console too.
 
